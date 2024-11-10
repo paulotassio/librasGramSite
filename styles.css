@@ -1,0 +1,326 @@
+body{
+    
+    background-color: #87CEFA;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: line;
+    justify-content: center;
+    align-items: center;
+    margin-top: -170px;
+    margin-left: 19%;
+    margin-right: 19%;
+    margin-bottom: 0px;
+    height: 30vh; /*Define a altura do contêiner como 100% da altura da janela de visualização */
+    background-color: #87CEFA;
+    position: relative;
+
+}
+
+.container-resposta {
+    display: flex;
+    flex-direction: line;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    height: 90px;
+    background-color: #87CEFA;
+    position: relative;
+    
+}
+
+.fase{
+    width: 100px;
+    height: 50px;
+    background-color: white;
+    margin: 3px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #191970;
+}
+
+.target {
+    width: 100px;
+    height: 50px;
+    background-color: white;
+    margin: 0px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    border-radius: 0px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.target.correct {
+    background-color: green;
+}
+
+.frase-completa {
+    background-color: white; /* Define o fundo da palavra completa como branco */
+    display: inline-block; /* Permite que a div tenha a largura do texto */
+    padding: 5px 10px; /* Adiciona um espaço ao redor do texto */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    position: relative; /* Permite posicionar a div */
+    top: 50%; /* Alinha a div verticalmente ao centro */
+    left: 50%; /* Alinha a div horizontalmente ao centro */
+    transform: translate(-50%, -50%); 
+    margin-top: 20px;
+
+}
+
+#fraseCompleta {
+    
+    text-align: center;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #006400;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    background-color: #87CEFA;
+    position: relative;
+
+}
+
+button {
+    width: 80px;
+    height: 80px;
+    border: none;
+    margin: 20px;
+    cursor: pointer;
+    
+}
+
+#atualPageBtn {
+    
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #3ADF00;
+}
+
+#voltarBtn {
+    
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 50%; /* Tornando os botões circulares */
+    background-color: #D8D8D8;
+}
+
+#avancarBtn {
+    
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 50%; /* Tornando os botões circulares */
+    font-weight: bold;
+   
+}
+
+button:hover {
+    background-color: #ccc;
+    transform: scale(1.3); /* Aumenta o tamanho do botão em 10% */
+}
+
+/*
+.flash-red {
+    animation: flash-red-bg 0.3s;
+}
+
+@keyframes flash-red-bg {
+    0% { background-color: inherit; }
+    50% { background-color: red; }
+    100% { background-color: inherit; }
+}
+*/
+
+.flash-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98%;
+    height: 105%;
+    pointer-events: none; /* Para que o elemento não seja clicável */
+    z-index: 9999; /* Garante que o elemento esteja na frente de todo o conteúdo */
+    border: 10px solid transparent; /* Largura e estilo da borda inicial */
+    border-radius: 0px; /* Raio de borda para bordas arredondadas */
+    animation: flash 1s infinite alternate; /* Aplica o efeito de flash */
+}
+
+@keyframes flash {
+    from {
+        border-color: transparent; /* Cor inicial da borda */
+    }
+    to {
+        border-color: red; /* Cor final da borda (vermelho) */
+    }
+}
+
+
+.confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red; /* Cor do confete */
+    border-radius: 50%;
+    animation: confetti-fall 3s linear infinite; /* Duração e estilo da animação */
+    top: -10px; /* Posição inicial acima do topo da tela */
+}
+
+/* Estilos adicionais para diferentes cores de confetes */
+.confetti-piece:nth-child(2n) {
+    background-color: blue;
+}
+
+.confetti-piece:nth-child(3n) {
+    background-color: green;
+}
+
+.confetti-piece:nth-child(4n) {
+    background-color: yellow;
+}
+
+.score-container,
+.attempts-container {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #006400;
+}
+
+.gif {
+    
+    position: absolute;
+    left: 10px; 
+    top: 10px; 
+    transform: translateY(0%); /* Ajusta a posição vertical */
+    max-width: 250px;
+    width: 30%; /* Define a largura do GIF em relação à largura da tela */
+    height: auto; /* Define a altura do GIF */
+    display: none; /* Deixa o GIF invisível inicialmente */
+    margin-top: -50px;
+}
+
+#gif-b {
+    position: absolute;
+    right: 10px; /* Define a margem direita */
+    top: 10px; /* Posiciona o elemento no centro verticalmente */
+    transform: translateY(0%); /* Ajusta a posição vertical */
+    max-width: 250px;
+    width: 30%; /* Define a largura do GIF em relação à largura da tela */
+    height: auto; /* Define a altura do GIF */
+    display: none; /* Deixa o GIF invisível inicialmente */
+    margin-top: -50px;
+}
+
+#gif-jogo1 {
+    position: absolute;
+    right: 10px; /* Define a margem direita */
+    top: 10px; /* Posiciona o elemento no centro verticalmente */
+    transform: translateY(0%); /* Ajusta a posição vertical */
+    max-width: 250px;
+    width: 30%; /* Define a largura do GIF em relação à largura da tela */
+    height: auto; /* Define a altura do GIF */
+    margin-top: -50px;
+}
+
+/* GIF do botão "Avançar" */
+.gif-avancar {
+    position: absolute;
+    left: 10px; 
+    top: 10px; 
+    transform: translateY(0%); /* Ajusta a posição vertical */
+    max-width: 250px;
+    width: 30%; /* Define a largura do GIF em relação à largura da tela */
+    height: auto; /* Define a altura do GIF */
+    display: none; /* Deixa o GIF invisível inicialmente */
+    margin-top: -50px;
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between; /* Distribui as divs horizontalmente com espaçamento entre elas */
+    /*flex-wrap: wrap;  Permite que as divs quebrem para a linha abaixo quando não couberem mais */
+    width: 100%;
+    margin-bottom: 0;
+    background-color: #87CEFA;
+}
+
+.fundo-gif{
+    height: 350px; /* Altura de 350px */
+    /*background-color: lightblue;*/
+    padding: 5px;
+    margin-bottom: -20px; /* Adiciona margem na parte inferior para separar as divs */
+    /*border-radius: 5px;*/
+    text-align: center;
+    
+}
+
+/* Definindo largura fixa para a "div 1" e "div 3" */
+.fundo-gif:nth-child(1),
+.fundo-gif:nth-child(3) {
+    width: 250px;
+}
+
+/* A "div 2" ocupa o espaço restante */
+.fundo-gif:nth-child(2) {
+    flex-grow: 1;
+}
+
+/* Estilos CSS para telas menores */
+@media (max-width: 768px) {
+    .fundo-gif {
+        width: calc(50% - 20px); /* Para telas menores que 768px, as divs ocuparão 50% da largura da tela */
+    }
+}
+
+@media (max-width: 480px) {
+    .fundo-gif {
+        width: calc(100% - 20px); /* Para telas menores que 480px, as divs ocuparão 100% da largura da tela */
+    }
+}
+
+ /* Efeito de zoom nas divs de fase */
+.fase {
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Adiciona uma transição suave ao efeito de zoom */
+}
+
+.fase:hover {
+    transform: scale(1.3); /* Aumenta o tamanho da div de fase em 10% */
+}

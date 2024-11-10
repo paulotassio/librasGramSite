@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Didático - Fases em Português</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="banner">
+        <div class="fundo-gif">
+            <div id="gif-container" class="gif-container">
+                <img id="gif" class="gif" src="gif/voltar.gif" alt="GIF">
+                <!-- GIF do botão "Avançar" -->
+                <img id="gif-avancar" class="gif-avancar" src="gif/proximo.gif" alt="GIF Avançar">
+
+                <img id="gif-jogo1" class="gif-jogo1" src="gif/mesa.gif" alt="GIF Jogo1">
+
+            </div>
+        </div>     
+
+        <div class="fundo-gif">
+            <div class="score-container">
+                <h1>NÍVEL 1 - FRASE 4</h1>
+            </div>
+            <div class="score-container">
+                Pontuação: <span id="pontuacao">0</span>
+            </div>
+
+            <div class="attempts-container">
+                Tentativas: <span id="tentativas">0</span>
+            </div>
+        </div>
+
+        <div class="fundo-gif">
+            <img id="gif-b" src="gif/parabens.gif" alt="GIF">
+        </div>
+    </div>
+
+    
+    <div class="container">
+        <div class="fase" id="fase1" draggable="true" ondragstart="drag(event)">em</div>
+        <div class="fase" id="fase2" draggable="true" ondragstart="drag(event)">mesa</div>
+        <div class="fase" id="fase3" draggable="true" ondragstart="drag(event)">caderia</div>
+        <div class="fase" id="fase4" draggable="true" ondragstart="drag(event)">lápis</div>
+        <div class="fase" id="fase5" draggable="true" ondragstart="drag(event)">cima</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">sofa</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">abaixo</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">caneta</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">escrever</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">pessoa</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">cores</div>
+    
+    </div> 
+    <div class="container-resposta">  
+        <div class="target" id="target3" data-fase="mesa" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="target" id="target1" data-fase="lapis" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="target" id="target6" data-fase="em" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="target" id="target6" data-fase="cima" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    </div>
+
+    <div id="fraseCompleta" class="frase-completa"></div>
+
+    <div class="button-container">
+        <button id="voltarBtn" onclick="voltar()" onmouseover="exibirGif()" onmouseout="ocultarGif()">Voltar</button>
+
+        <button id="atualPageBtn" onclick="atualizaPagina()" onmouseover="exibirGif()" onmouseout="ocultarGif()">Tentar Novamente</button>
+
+        <button id="avancarBtn" onclick="avancar()" disabled onmouseover="exibirGifAvancar()" onmouseout="ocultarGifAvancar()">Avançar</button>
+    </div>
+
+
+    <div class="confetti"></div>
+
+
+
+    <script src="script4-nivel1.js"></script>
+
+    <script>
+        // Função para recuperar a pontuação da URL
+        function getPontuacaoFromURL() {
+            // Obtenha a string da URL atual
+            var url = window.location.href;
+            // Obtenha o índice do caractere '?' na URL
+            var index = url.indexOf('?');
+            if (index !== -1) {
+                // Se houver um '?' na URL, significa que existem parâmetros na URL
+                // Obtenha os parâmetros após o '?' e divida-os em pares chave-valor
+                var paramsString = url.substring(index + 1);
+                var params = paramsString.split('&');
+                // Percorra os parâmetros para encontrar o parâmetro 'pontuacao'
+                for (var i = 0; i < params.length; i++) {
+                    var param = params[i].split('=');
+                    if (param[0] === 'pontuacao') {
+                        // Se o parâmetro for 'pontuacao', exiba seu valor na página
+                        document.getElementById('pontuacao').textContent = param[1];
+                        break; // Pare de procurar depois de encontrar a pontuação
+                    }
+                }
+            }
+        }
+
+        // Chame a função para recuperar e exibir a pontuação da URL ao carregar a página
+        window.onload = getPontuacaoFromURL;
+    </script> 
+    
+
+</body>
+</html>

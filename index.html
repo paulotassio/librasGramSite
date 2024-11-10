@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imagens GIF</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #87CEFA;
+        position: relative;
+    }
+
+    .top-div,
+    .bottom-div {
+        width: 100%;
+        background-color: #87CEFA;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        position: fixed;
+        z-index: 1;
+    }
+
+    .top-div {
+        top: 0%;
+        height: 20vh;
+        position: absolute;
+        color: white;
+        font-size: 40px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        bottom: 0;
+
+    }
+
+    .bottom-div {
+        height: 35vh;
+        bottom: 0;
+    }
+
+    .images-container {
+        display: flex;
+        justify-content: center;
+        flex: 1; /* Permite que o contêiner das imagens ocupe o espaço restante */
+        position: relative;
+    }
+
+     .image-container {
+        position: relative;
+        margin: 0 20px;
+        max-width: 250px; /* Limita a largura máxima padrão */
+        height: auto; /* Mantém a proporção da imagem */
+        overflow: hidden; /* Oculta a parte excedente da imagem quando houver zoom */
+        transition: transform 0.3s ease; /* Adiciona uma transição suave ao efeito de zoom */
+    }
+
+    .image {
+       
+        width: 100%;
+        height: auto;
+        display: block;
+        
+    }
+
+    /* Adiciona efeito de zoom quando o mouse passa por cima */
+    .image-container:hover {
+        transform: scale(1.2);
+    }
+
+    .word-container {
+        position: absolute;
+        top: 17%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 5px;
+        text-align: center;
+
+    }
+
+    .popup {
+            display: none; /* Inicialmente, o popup está oculto */
+            position: fixed;
+            width: 650px; /* Define a largura do popup */
+            height: 410px; /* Define a altura do popup */
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2px;
+        }
+
+    .close-btn {
+        position: absolute;
+        bottom: 10px; /* Define a distância do botão ao fundo */
+        left: 50%; /* Define a distância do botão à esquerda como 50% */
+        transform: translateX(-50%); /* Centraliza o botão horizontalmente */
+        background-color: #ccc;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) { /* Ajuste para telas menores, como smartphones */
+        .image-container{
+            max-width: 25%; /* Divide o espaço em duas colunas */
+            margin: 10px; /* Adiciona um espaço entre as imagens */
+        }
+
+        .popup {
+            width: 100%; /* Define a largura da imagem como 100% da largura da tela */
+            height: 40%; /* Mantém a proporção da imagem */
+        }
+    }
+
+</style>
+</head>
+<body>
+
+    <div class="top-div">
+        LIBRAS GRAM
+    </div>
+
+    <div class="images-container">
+        <div class="image-container" onclick="avancar()">
+            <img class="image" src="gif/comecar.gif" alt="Imagem 1">
+            <div class="word-container">Começar</div>
+        </div>
+        <div class="image-container" onclick="togglePopup()">
+            <img class="image" src="gif/comoJogar.gif" alt="Imagem 2">
+            <div class="word-container">Como Jogar?</div>
+        </div>
+        <div class="image-container" onclick="closeWindow()">
+            <img class="image" src="gif/voltar.gif" alt="Imagem 3">
+            <div class="word-container">Sair</div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+    <!-- Conteúdo do popup -->
+        <img class="image" src="gif/tutorial.gif" alt="Imagem 3">
+        <button class="close-btn" onclick="togglePopup()">Fechar</button>
+    </div>
+
+
+    <script>
+        
+        var popupWindow;
+
+        function avancar() {
+        
+            window.location.href = "jogo1n1.html?pontuacao=" + 0;
+
+        }
+
+        function closeWindow() {
+
+            window.AndroidInterface.encerrarApp();
+            window.open('','_parent','');
+            window.close();
+        }
+
+        function togglePopup() {
+        var popup = document.getElementById('popup');
+        if (popup.style.display === 'block') {
+            popup.style.display = 'none'; // Se o popup estiver visível, oculta-o
+        } else {
+            popup.style.display = 'block'; // Caso contrário, mostra-o
+        }
+    }
+
+    </script>
+
+</body>
+</html>
