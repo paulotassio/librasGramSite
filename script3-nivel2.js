@@ -2,7 +2,6 @@
 
 var pontuacao2 = 0;
 var tentativas = 0;
-var contador = 0;
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -18,11 +17,10 @@ function drop(ev) {
     var draggedFase = document.getElementById(data);
     var target = ev.target;
     var pontuacao = Number(document.getElementById('pontuacao').innerHTML);
-    contador++;
 
 
     if (target.classList.contains('target')) {
-        if (target.dataset.fase.trim() != null) {
+        if (target.dataset.fase.trim() === draggedFase.innerHTML.trim()) {
             target.classList.add('correct');
             draggedFase.setAttribute('draggable', 'false');
             draggedFase.style.opacity = '0.5';
@@ -32,14 +30,12 @@ function drop(ev) {
             target.textContent = draggedFase.textContent;
             target.dataset.fase = draggedFase.textContent;
 
-            // Verificar se todas as fases estão corretas
-            var correctTargets = document.querySelectorAll('.correct');
-            var correctWords = Array.from(correctTargets).map(t => t.textContent.trim());
-            var requiredWords = ["mesa", "lápis", "cima"];
-            var allWordsPresent = requiredWords.every(word => correctWords.includes(word));
 
-            if (contador == 4 && allWordsPresent) {
-                var fraseCompleta = "o lápis está em cima da mesa"; 
+            // Verificar se todas as fases estão corretas
+            if (document.querySelectorAll('.correct').length === document.querySelectorAll('.target').length) {
+               
+                
+                var fraseCompleta = "a caneta está com a tampa quebrada"; 
                 document.getElementById('fraseCompleta').innerText = fraseCompleta;
 
                 pontuacao += 10;
@@ -50,35 +46,8 @@ function drop(ev) {
                 showConfetti(); // Mostrar confetes
 
                 tornarGifVisivel();
-            }else if(contador == 4){
-                flashRed();
-                tentativas +=1;
-            }
-            else{
 
             }
-
-            
-           
-
-/*
-            // Verificar se todas as fases estão corretas
-            if (document.querySelectorAll('.correct').length === document.querySelectorAll('.target').length) {
-                
-                
-                var fraseCompleta = "eu vou para a escola"; 
-                document.getElementById('fraseCompleta').innerText = fraseCompleta;
-
-                pontuacao += 10;
-                pontuacao2 = pontuacao;
-
-                document.getElementById('avancarBtn').disabled = false;
-
-                showConfetti(); // Mostrar confetes
-
-                tornarGifVisivel(); 
-
-            }*/
             
         } else {
             //document.body.classList.add('flash-red');
@@ -87,10 +56,7 @@ function drop(ev) {
             //}, 100); // Tempo de duração da animação em milissegundos (300ms = 0.3s)
 
             flashRed();
-
             tentativas +=1;
-
-            contador = 0;
         }
 
 
@@ -106,14 +72,9 @@ function voltar() {
     window.history.back(); // Retorna à página anterior
 }
 
-function atualizaPagina() {
-    /*alert("PARABÉNS!");*/
-    location.reload();
-}
-
 function avancar() {
     /*alert("PARABÉNS!");*/
-    window.location.href = "jogo1.html?pontuacao=" + pontuacao2;
+    window.location.href = "nivel4.html?pontuacao=" + pontuacao2;
 }
 
 function flashRed() {
@@ -176,7 +137,6 @@ function ocultarGifAvancar() {
     var gifAvancar = document.getElementById('gif-avancar');
     gifAvancar.style.display = 'none'; // Torna o GIF invisível
 }
-
 
 /////////////////////////////////////////////////////////////////
 
@@ -261,7 +221,7 @@ function mostrarImagem() {
     imgContainer.style.zIndex = "1000";
 
     var img = document.createElement("img");
-    img.src = "imgAuxiliar/img4.jpeg"; // Substitua pelo caminho correto da imagem
+    img.src = "imgAuxiliar/img3.jpeg"; // Substitua pelo caminho correto da imagem
     img.style.width = "300px";
     img.style.height = "auto";
     imgContainer.appendChild(img);
@@ -288,28 +248,4 @@ window.onload = function() {
     btn.onclick = mostrarImagem;
     gifContainer.parentNode.insertBefore(btn, gifContainer.nextSibling);
 };
-
-
-// Função para exibir as imagens em Libras ao passar o mouse sobre a palavra
-function mostrarLibrasPreview(elemento) {
-    const librasPreview = document.getElementById('librasPreview');
-    librasPreview.innerHTML = ''; // Limpa o contêiner
-
-    const palavra = elemento.innerText.toLowerCase(); // Obtém o texto da palavra (ex.: "para")
-    const palavraSemAcento = palavra.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    const letras = palavraSemAcento.split(''); // Divide em letras (ex.: ['p', 'a', 'r', 'a'])
-
-    letras.forEach(letra => {
-        const img = document.createElement('img');
-        img.src = `alfabetoLibras/${letra}.png`; // Caminho para a imagem correspondente
-        img.alt = `Sinal de ${letra} em Libras`;
-        librasPreview.appendChild(img);
-    });
-}
-
-// Função para esconder as imagens quando o mouse sai da palavra
-function esconderLibrasPreview() {
-    const librasPreview = document.getElementById('librasPreview');
-    librasPreview.innerHTML = ''; // Limpa o contêiner
-}
 

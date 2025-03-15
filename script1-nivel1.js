@@ -184,6 +184,7 @@ function ocultarGifAvancar() {
 /////////////////////////////////////////////////////////////////
 
 // Função para obter uma posição aleatória
+/*
         function getRandomPosition(max) {
             return Math.floor(Math.random() * max);
         }
@@ -227,6 +228,93 @@ function ocultarGifAvancar() {
             });
         });
 
+*/
 
+function organizarPalavras() {
+    const container = document.querySelector(".container");
+    const fases = Array.from(container.querySelectorAll(".fase"));
+    const colunas = Math.ceil(fases.length / 2);
+
+    container.style.display = "grid";
+    container.style.gridTemplateColumns = `repeat(${colunas}, auto)`;
+    container.style.gridGap = "10px";
+    container.style.justifyContent = "center";
+    container.style.position = "relative";
+
+    fases.forEach((fase, index) => {
+        fase.style.position = "static";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    organizarPalavras();
+});
+
+
+// Função para exibir uma imagem temporariamente
+function mostrarImagem() {
+    var imgContainer = document.createElement("div");
+    imgContainer.id = "imgPopup";
+    imgContainer.style.position = "fixed";
+    imgContainer.style.top = "50%";
+    imgContainer.style.left = "50%";
+    imgContainer.style.transform = "translate(-50%, -50%)";
+    imgContainer.style.background = "rgba(0, 0, 0, 0.8)";
+    imgContainer.style.padding = "10px";
+    imgContainer.style.borderRadius = "20px";
+    imgContainer.style.zIndex = "1000";
+
+    var img = document.createElement("img");
+    img.src = "imgAuxiliar/img1.jpeg"; // Substitua pelo caminho correto da imagem
+    img.style.width = "300px";
+    img.style.height = "auto";
+    imgContainer.appendChild(img);
+
+    document.body.appendChild(imgContainer);
+
+    setTimeout(() => {
+        document.body.removeChild(imgContainer);
+    }, 3000);
+}
+
+// Criando botão abaixo do GIF da frase
+window.onload = function() {
+    var gifContainer = document.getElementById('gif-b');
+    var btn = document.createElement("button");
+    btn.innerText = "Mostrar Imagem";
+    btn.style.display = "block";
+    btn.style.margin = "10px auto";
+    btn.style.padding = "10px";
+    btn.style.fontSize = "16px";
+    btn.style.cursor = "pointer";
+    btn.style.backgroundColor = "yellow";
+    btn.style.fontWeight = "bold";
+    btn.onclick = mostrarImagem;
+    gifContainer.parentNode.insertBefore(btn, gifContainer.nextSibling);
+};
+
+
+// Função para exibir as imagens em Libras ao passar o mouse sobre a palavra
+function mostrarLibrasPreview(elemento) {
+    const librasPreview = document.getElementById('librasPreview');
+    librasPreview.innerHTML = ''; // Limpa o contêiner
+
+    const palavra = elemento.innerText.toLowerCase(); // Obtém o texto da palavra (ex.: "para")
+    const palavraSemAcento = palavra.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const letras = palavraSemAcento.split(''); // Divide em letras (ex.: ['p', 'a', 'r', 'a'])
+
+    letras.forEach(letra => {
+        const img = document.createElement('img');
+        img.src = `alfabetoLibras/${letra}.png`; // Caminho para a imagem correspondente
+        img.alt = `Sinal de ${letra} em Libras`;
+        librasPreview.appendChild(img);
+    });
+}
+
+// Função para esconder as imagens quando o mouse sai da palavra
+function esconderLibrasPreview() {
+    const librasPreview = document.getElementById('librasPreview');
+    librasPreview.innerHTML = ''; // Limpa o contêiner
+}
 
 
