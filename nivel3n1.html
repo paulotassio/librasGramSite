@@ -17,6 +17,10 @@
 
                 <img id="gif-jogo1" class="gif-jogo1" src="gif/caneta.gif" alt="GIF Jogo1">
 
+                <button id="mostrarImagemBtn" onclick="mostrarImagem()">
+                    <img src="imgAuxiliar/dica.png" alt="Sinal de Dica em Libras" style="width: 90px; height: auto;">
+                </button>
+
             </div>
         </div>     
 
@@ -40,15 +44,15 @@
 
     
     <div class="container">
-        <div class="fase" id="fase1" draggable="true" ondragstart="drag(event)">quebrada</div>
-        <div class="fase" id="fase2" draggable="true" ondragstart="drag(event)">bonita</div>
-        <div class="fase" id="fase3" draggable="true" ondragstart="drag(event)">caneta</div>
-        <div class="fase" id="fase4" draggable="true" ondragstart="drag(event)">escrever</div>
-        <div class="fase" id="fase5" draggable="true" ondragstart="drag(event)">tampa</div>
-        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">papel</div>
-        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">lápis</div>
-        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">borracha</div>
-        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)">cola</div>
+        <div class="fase" id="fase1" draggable="true" ondragstart="drag(event)" onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">quebrada</div>
+        <div class="fase" id="fase2" draggable="true" ondragstart="drag(event)" onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">bonita</div>
+        <div class="fase" id="fase3" draggable="true" ondragstart="drag(event)" onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">caneta</div>
+        <div class="fase" id="fase4" draggable="true" ondragstart="drag(event)" onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">escrever</div>
+        <div class="fase" id="fase5" draggable="true" ondragstart="drag(event)" onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">tampa</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)" onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">papel</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event) "onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">lápis</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)" onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">borracha</div>
+        <div class="fase" id="fase6" draggable="true" ondragstart="drag(event)" onmouseover="mostrarLibrasPreview(this)" onmouseout="esconderLibrasPreview()">cola</div>
     
     </div> 
     <div class="container-resposta">  
@@ -59,13 +63,14 @@
     </div>
 
     <div id="fraseCompleta" class="frase-completa"></div>
+    <div id="librasPreview" class="libras-preview"></div>
 
     <div class="button-container">
         <button id="voltarBtn" onclick="voltar()" onmouseover="exibirGif()" onmouseout="ocultarGif()">Voltar</button>
 
         <button id="atualPageBtn" onclick="atualizaPagina()" onmouseover="exibirGif()" onmouseout="ocultarGif()">Tentar Novamente</button>
 
-        <button id="avancarBtn" onclick="avancar()" disabled onmouseover="exibirGifAvancar()" onmouseout="ocultarGifAvancar()">Avançar</button>
+        <button id="avancarBtn" onclick="avancar()" disabled onmouseover="exibirGifAvancar()" onmouseout="ocultarGifAvancar()">Próximo</button>
     </div>
 
 
