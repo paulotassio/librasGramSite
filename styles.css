@@ -29,7 +29,7 @@ body{
     justify-content: center;
     align-items: center;
     margin-bottom: 0px;
-    height: 90px;
+    height: 100px;
     background-color: #87CEFA;
     position: relative;
     
@@ -216,8 +216,8 @@ button:hover {
 .score-container,
 .attempts-container {
     text-align: center;
-    margin-top: 20px;
-    font-size: 20px;
+    margin-top: 10px;
+    font-size: 15px;
     font-family: Arial, sans-serif;
     font-weight: bold;
     color: #006400;
@@ -282,7 +282,7 @@ button:hover {
 }
 
 .fundo-gif{
-    height: 350px; /* Altura de 350px */
+    height: 300px; /* Altura de 350px */
     /*background-color: lightblue;*/
     padding: 5px;
     margin-bottom: -20px; /* Adiciona margem na parte inferior para separar as divs */
@@ -297,23 +297,6 @@ button:hover {
     width: 250px;
 }
 
-/* A "div 2" ocupa o espaço restante */
-.fundo-gif:nth-child(2) {
-    flex-grow: 1;
-}
-
-/* Estilos CSS para telas menores */
-@media (max-width: 768px) {
-    .fundo-gif {
-        width: calc(50% - 20px); /* Para telas menores que 768px, as divs ocuparão 50% da largura da tela */
-    }
-}
-
-@media (max-width: 480px) {
-    .fundo-gif {
-        width: calc(100% - 20px); /* Para telas menores que 480px, as divs ocuparão 100% da largura da tela */
-    }
-}
 
  /* Efeito de zoom nas divs de fase */
 .fase {
@@ -323,4 +306,27 @@ button:hover {
 
 .fase:hover {
     transform: scale(1.3); /* Aumenta o tamanho da div de fase em 10% */
+}
+
+#mostrarImagemBtn {
+    background: none; /* Remove o fundo padrão do botão */
+    border: none; /* Remove a borda padrão */
+    padding: 5px; /* Ajusta o espaço interno */
+    cursor: pointer; /* Mostra que é clicável */
+}
+
+#mostrarImagemBtn img {
+    display: block; /* Garante que a imagem não tenha espaços extras */
+}
+
+.libras-preview {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    min-height: 60px; /* Espaço reservado para evitar deslocamento da página */
+}
+.libras-preview img {
+    width: 50px;
+    height: auto;
 }
