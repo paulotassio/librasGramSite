@@ -72,7 +72,7 @@ function voltar() {
 
 function avancar() {
     /*alert("PARABÉNS!");*/
-    window.location.href = "nivel5.html?pontuacao=" + pontuacao2;
+    window.location.href = "pontuacao.html?pontuacao=" + pontuacao2;
 }
 
 function flashRed() {
@@ -271,3 +271,4 @@ function esconderLibrasPreview() {
     const librasPreview = document.getElementById('librasPreview');
     librasPreview.innerHTML = ''; // Limpa o contêiner
 }
+
