@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Didático - Fases em Português</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="pontos-finais">
+
+        <div>
+            <div class="pontuacao-final">
+                <h1>SUA PONTUAÇÃO FINAL</h1>
+            </div>
+            <div class="pontuacao-final">
+                <h1 id="pontuacao">0</h1>
+                <h1> PONTOS</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="confetti"></div>
+
+    <script src="pontuacao.js"></script>
+
+    <script>
+        // Função para recuperar a pontuação da URL
+        function getPontuacaoFromURL() {
+            // Obtenha a string da URL atual
+            var url = window.location.href;
+            // Obtenha o índice do caractere '?' na URL
+            var index = url.indexOf('?');
+            if (index !== -1) {
+                // Se houver um '?' na URL, significa que existem parâmetros na URL
+                // Obtenha os parâmetros após o '?' e divida-os em pares chave-valor
+                var paramsString = url.substring(index + 1);
+                var params = paramsString.split('&');
+                // Percorra os parâmetros para encontrar o parâmetro 'pontuacao'
+                for (var i = 0; i < params.length; i++) {
+                    var param = params[i].split('=');
+                    if (param[0] === 'pontuacao') {
+                        // Se o parâmetro for 'pontuacao', exiba seu valor na página
+                        document.getElementById('pontuacao').textContent = param[1];
+                        break; // Pare de procurar depois de encontrar a pontuação
+                    }
+                }
+            }
+        }
+
+        // Chame a função para recuperar e exibir a pontuação da URL ao carregar a página
+        window.onload = function () {
+            getPontuacaoFromURL();
+            showConfetti();
+        };
+    </script> 
+    
+
+</body>
+</html>
