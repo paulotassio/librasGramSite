@@ -223,6 +223,16 @@ button:hover {
     color: #006400;
 }
 
+.score-final,
+.pontuacao-final {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #006400;
+}
+
 .gif {
     
     position: absolute;
@@ -273,6 +283,17 @@ button:hover {
 }
 
 .banner{
+    display: flex;
+    justify-content: space-between; /* Distribui as divs horizontalmente com espaçamento entre elas */
+    /*flex-wrap: wrap;  Permite que as divs quebrem para a linha abaixo quando não couberem mais */
+    width: 100%;
+    margin-bottom: 0;
+    background-color: #87CEFA;
+}
+
+.pontos-finais{
+    margin-top: 10%;
+    margin-left: 35%;
     display: flex;
     justify-content: space-between; /* Distribui as divs horizontalmente com espaçamento entre elas */
     /*flex-wrap: wrap;  Permite que as divs quebrem para a linha abaixo quando não couberem mais */
